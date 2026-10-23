@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="GuardianAI — Autonomous Incident Detection & Response Agent. AI-powered campus safety incident analysis and response." />
+    <title>GuardianAI — Autonomous Incident Response</title>
+    <style>
+      body {
+        background-color: #0a0e17;
+        color: #f1f5f9;
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      }
+      #loader-overlay {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        gap: 16px;
+      }
+      .loader-spinner {
+        width: 48px;
+        height: 48px;
+        border: 4px solid rgba(56, 189, 248, 0.2);
+        border-top-color: #38bdf8;
+        border-radius: 50%;
+        animation: spin 0.9s linear infinite;
+      }
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+      .loader-text {
+        font-size: 1.1rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        color: #93c5fd;
+      }
+    </style>
+    <script>
+      // Detect if user opened raw index.html via file:// instead of dev server
+      if (window.location.protocol === 'file:') {
+        window.location.href = '../emergency-demo/index.html';
+      }
+
+      // Visible runtime error display so screen is NEVER blank
+      window.addEventListener('error', function(e) {
+        var el = document.getElementById('runtime-error-box');
+        if (!el) {
+          el = document.createElement('div');
+          el.id = 'runtime-error-box';
+          el.style.cssText = 'position:fixed;bottom:20px;left:20px;right:20px;max-width:700px;background:#7f1d1d;color:#fff;border:1px solid #ef4444;border-radius:10px;padding:16px 20px;z-index:99999;font-family:monospace;box-shadow:0 10px 30px rgba(0,0,0,0.7);';
+          document.body.appendChild(el);
+        }
+        el.innerHTML = '<strong style="font-size:14px;color:#fca5a5;">⚠️ Frontend Issue Detected:</strong><p style="margin:8px 0;font-size:13px;">' + (e.message || 'Unknown script error') + '</p><div style="font-size:11px;color:#fecdd3;max-height:120px;overflow:auto;">' + (e.error && e.error.stack ? e.error.stack : '') + '</div><div style="margin-top:12px;"><a href="/emergency-demo/index.html" style="color:#fff;background:#2563eb;padding:6px 14px;border-radius:6px;text-decoration:none;font-size:12px;display:inline-block;margin-right:10px;">Open Emergency Dashboard</a><button onclick="window.location.reload()" style="background:#374151;color:#fff;border:none;padding:6px 12px;border-radius:6px;cursor:pointer;font-size:12px;">Retry</button></div>';
+      });
+    </script>
+  </head>
+  <body>
+    <div id="root">
+      <div id="loader-overlay">
+        <div class="loader-spinner"></div>
+        <div class="loader-text">GuardianAI Operations Center Initializing...</div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
