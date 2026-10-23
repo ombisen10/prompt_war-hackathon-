@@ -1,0 +1,3 @@
+@echo off
+echo Opening GuardianAI Emergency Dashboard in your browser ...
+start "" "%~dp0emergency-demo\index.html"

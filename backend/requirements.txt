@@ -1,0 +1,14 @@
+# GuardianAI Backend Dependencies
+# Note: GuardianAI includes built-in standalone zero-dependency implementations
+# of FastAPI, Pydantic, and Uvicorn for local offline operation and environments
+# where external wheel downloads from files.pythonhosted.org are blocked or slow.
+
+# Built-in / Already satisfied in standard environment:
+pytest>=8.0.0
+
+# Optional production packages (if network permits pip installation):
+# fastapi>=0.115.0
+# uvicorn>=0.30.0
+# pydantic>=2.9.0
+# python-dotenv>=1.0.0
+# google-genai>=1.0.0  # Optional: For Gemini live cloud model integration
